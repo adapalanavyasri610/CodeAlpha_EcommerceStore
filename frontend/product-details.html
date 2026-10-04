@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Product Details - ShopEasy</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* =========================
+           PRODUCT DETAILS PAGE
+        ========================= */
+
+        .details-section {
+            padding: 80px 0;
+            min-height: 75vh;
+        }
+
+        .back-button {
+            display: inline-block;
+
+            margin-bottom: 30px;
+
+            color: #333;
+
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+        .back-button:hover {
+            opacity: 0.6;
+        }
+
+        .product-details-container {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 60px;
+
+            align-items: center;
+
+            background: #ffffff;
+
+            padding: 40px;
+
+            border-radius: 12px;
+
+            border: 1px solid #eeeeee;
+        }
+
+        .details-image-container {
+            width: 100%;
+
+            height: 500px;
+
+            background: #f4f4f4;
+
+            border-radius: 10px;
+
+            overflow: hidden;
+        }
+
+        .details-image {
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+        }
+
+        .details-category {
+            font-size: 13px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 2px;
+
+            color: #777;
+
+            margin-bottom: 12px;
+        }
+
+        .details-title {
+            font-size: 42px;
+
+            line-height: 1.15;
+
+            margin-bottom: 20px;
+        }
+
+        .details-description {
+            color: #666;
+
+            font-size: 16px;
+
+            line-height: 1.8;
+
+            margin-bottom: 25px;
+        }
+
+        .details-price {
+            font-size: 30px;
+
+            font-weight: 700;
+
+            margin-bottom: 20px;
+        }
+
+        .stock-info {
+            margin-bottom: 25px;
+
+            font-weight: 600;
+        }
+
+        .details-actions {
+            display: flex;
+
+            gap: 15px;
+
+            align-items: center;
+        }
+
+        .details-cart-button {
+            border: none;
+
+            background: #111;
+
+            color: white;
+
+            padding: 14px 25px;
+
+            border-radius: 5px;
+
+            cursor: pointer;
+
+            font-size: 15px;
+
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+        .details-cart-button:hover {
+            opacity: 0.8;
+
+            transform: translateY(-2px);
+        }
+
+        .error-container {
+            text-align: center;
+
+            padding: 80px 20px;
+        }
+
+        .error-container h2 {
+            margin-bottom: 15px;
+        }
+
+        .error-container p {
+            color: #666;
+
+            margin-bottom: 25px;
+        }
+
+        .home-button {
+            display: inline-block;
+
+            background: #111;
+
+            color: white;
+
+            padding: 12px 22px;
+
+            border-radius: 5px;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            .product-details-container {
+                grid-template-columns: 1fr;
+
+                gap: 35px;
+
+                padding: 25px;
+            }
+
+            .details-image-container {
+                height: 400px;
+            }
+
+            .details-title {
+                font-size: 34px;
+            }
+
+        }
+
+
+        @media (max-width: 500px) {
+
+            .details-section {
+                padding: 50px 0;
+            }
+
+            .details-image-container {
+                height: 300px;
+            }
+
+            .details-title {
+                font-size: 30px;
+            }
+
+            .details-actions {
+                flex-direction: column;
+
+                align-items: stretch;
+            }
+
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header class="header">
+
+        <div class="container navbar">
+
+            <div class="logo">
+                ShopEasy
+            </div>
+
+
+            <nav class="nav-links">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="index.html#products">
+                    Products
+                </a>
+
+                <a href="index.html#about">
+                    About
+                </a>
+
+                <a href="index.html#contact">
+                    Contact
+                </a>
+
+            </nav>
+
+
+            <a href="cart.html" class="cart-icon">
+
+                🛒
+
+                <span id="cart-count">
+                    0
+                </span>
+
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================
+         PRODUCT DETAILS
+    ========================= -->
+
+    <main class="details-section">
+
+        <div class="container">
+
+            <a href="index.html#products" class="back-button">
+                ← Back to Products
+            </a>
+
+
+            <!-- Product will be loaded here -->
+
+            <div id="product-details" class="product-details-container">
+
+                <div class="loading">
+
+                    Loading product details...
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer class="footer">
+
+        <div class="container">
+
+            <h3>
+                ShopEasy
+            </h3>
+
+            <p>
+                Your simple online shopping destination.
+            </p>
+
+            <p class="copyright">
+                © 2026 ShopEasy. All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- JavaScript -->
+
+    <script src="js/product-details.js"></script>
+
+</body>
+
+</html>

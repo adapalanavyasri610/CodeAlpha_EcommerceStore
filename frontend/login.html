@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login - ShopEasy</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .auth-section {
+            min-height: 75vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+        }
+
+        .auth-card {
+            width: 100%;
+            max-width: 450px;
+            background: #ffffff;
+            border: 1px solid #eeeeee;
+            border-radius: 12px;
+            padding: 40px;
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .auth-header h1 {
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+
+        .auth-header p {
+            color: #666;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 15px;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #111;
+        }
+
+        .auth-button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 5px;
+            background: #111;
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .auth-button:hover {
+            opacity: 0.85;
+        }
+
+        .auth-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .message {
+            display: none;
+            padding: 12px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .message.success {
+            display: block;
+            background: #e8f7e8;
+            color: #216721;
+        }
+
+        .message.error {
+            display: block;
+            background: #fdeaea;
+            color: #a02020;
+        }
+
+        .auth-footer {
+            text-align: center;
+            margin-top: 25px;
+            color: #666;
+        }
+
+        .auth-footer a {
+            color: #111;
+            font-weight: 600;
+        }
+
+        @media (max-width: 500px) {
+
+            .auth-card {
+                padding: 25px;
+            }
+
+            .auth-header h1 {
+                font-size: 28px;
+            }
+
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- HEADER -->
+
+    <header class="header">
+
+        <div class="container navbar">
+
+            <a href="index.html" class="logo">
+                ShopEasy
+            </a>
+
+
+            <nav class="nav-links">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="index.html#products">
+                    Products
+                </a>
+
+                <a href="register.html">
+                    Register
+                </a>
+
+                <a href="cart.html">
+                    Cart
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- LOGIN -->
+
+    <main class="auth-section">
+
+        <div class="auth-card">
+
+
+            <div class="auth-header">
+
+                <h1>
+                    Welcome Back
+                </h1>
+
+                <p>
+                    Login to your ShopEasy account.
+                </p>
+
+            </div>
+
+
+            <div id="login-message" class="message"></div>
+
+
+            <form id="login-form">
+
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <input type="email" id="email" placeholder="Enter your email" required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input type="password" id="password" placeholder="Enter your password" required>
+
+                </div>
+
+
+                <button type="submit" class="auth-button" id="login-button">
+                    Login
+                </button>
+
+
+            </form>
+
+
+            <div class="auth-footer">
+
+                Don't have an account?
+
+                <a href="register.html">
+                    Create Account
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+        <div class="container">
+
+            <h3>
+                ShopEasy
+            </h3>
+
+            <p>
+                Your simple online shopping destination.
+            </p>
+
+            <p class="copyright">
+                © 2026 ShopEasy. All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script src="js/login.js"></script>
+
+</body>
+
+</html>

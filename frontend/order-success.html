@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Order Successful - ShopEasy</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .success-container {
+            min-height: 70vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .success-card {
+            width: 100%;
+            max-width: 650px;
+            text-align: center;
+            background: white;
+            padding: 45px 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background: #28a745;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 45px;
+            font-weight: bold;
+        }
+
+        .success-card h2 {
+            margin-bottom: 15px;
+            color: #222;
+        }
+
+        .success-card>p {
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .order-details {
+            margin: 25px 0;
+            padding: 20px;
+            background: #f7f7f7;
+            border-radius: 10px;
+        }
+
+        .order-details p {
+            margin: 10px 0;
+            font-size: 17px;
+        }
+
+        .order-details strong {
+            color: #222;
+        }
+
+        .success-actions {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .success-button {
+            display: inline-block;
+            padding: 12px 22px;
+            text-decoration: none;
+            border-radius: 8px;
+            background: #007bff;
+            color: white;
+            font-weight: bold;
+        }
+
+        .success-button:hover {
+            opacity: 0.9;
+        }
+
+        .secondary-button {
+            background: #28a745;
+        }
+
+        .no-order {
+            color: #dc3545;
+            margin: 20px 0;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- =========================
+     HEADER
+========================= -->
+
+    <header class="header">
+
+        <div class="container navbar">
+
+            <div class="logo">
+                ShopEasy
+            </div>
+
+
+            <nav class="nav-links">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="my-orders.html">
+                    My Orders
+                </a>
+
+                <a href="cart.html">
+                    Cart
+                </a>
+
+            </nav>
+
+
+            <a href="cart.html" class="cart-icon">
+
+                🛒
+
+                <span id="cart-count">
+                    0
+                </span>
+
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- SUCCESS CONTENT -->
+
+    <main class="success-container">
+
+        <div class="success-card">
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+            <h2>
+                Order Placed Successfully!
+            </h2>
+
+            <p>
+                Thank you for shopping with ShopEasy.
+            </p>
+
+            <p>
+                Your order has been successfully placed.
+            </p>
+
+
+            <!-- ORDER DETAILS -->
+
+            <div class="order-details" id="order-details">
+
+                <p>
+                    Order ID:
+                    <strong id="order-id">
+                        Loading...
+                    </strong>
+                </p>
+
+                <p>
+                    Total Amount:
+                    ₹<strong id="order-total">
+                        Loading...
+                    </strong>
+                </p>
+
+                <p>
+                    Status:
+                    <strong id="order-status">
+                        Placed
+                    </strong>
+                </p>
+
+            </div>
+
+
+            <!-- BUTTONS -->
+
+            <div class="success-actions">
+
+                <a href="index.html" class="success-button">
+                    Continue Shopping
+                </a>
+
+                <a href="my-orders.html" class="success-button secondary-button">
+                    View My Orders
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+     FOOTER
+========================= -->
+
+    <footer class="footer">
+
+        <div class="container">
+
+            <h3>
+                ShopEasy
+            </h3>
+
+            <p>
+                Your simple online shopping destination.
+            </p>
+
+            <p class="copyright">
+                © 2026 ShopEasy. All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ORDER DATA SCRIPT -->
+
+    <script>
+
+        const lastOrder =
+            localStorage.getItem("lastOrder");
+
+        if (!lastOrder) {
+
+            document.getElementById(
+                "order-details"
+            ).innerHTML = `
+                <p class="no-order">
+                    Order information could not be found.
+                </p>
+
+                <p>
+                    Please check your My Orders page.
+                </p>
+            `;
+
+        } else {
+
+            try {
+
+                const order =
+                    JSON.parse(lastOrder);
+
+
+                document.getElementById(
+                    "order-id"
+                ).textContent =
+                    order.id;
+
+
+                document.getElementById(
+                    "order-total"
+                ).textContent =
+                    Number(
+                        order.total_amount
+                    ).toFixed(2);
+
+
+                document.getElementById(
+                    "order-status"
+                ).textContent =
+                    order.status || "Placed";
+
+
+            } catch (error) {
+
+                console.error(
+                    "Error reading order:",
+                    error
+                );
+
+                document.getElementById(
+                    "order-details"
+                ).innerHTML = `
+                    <p class="no-order">
+                        Unable to display order details.
+                    </p>
+                `;
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>
